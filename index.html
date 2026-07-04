@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fieldstone Grounds Co. — Landscaping & Lawn Care</title>
+<meta name="description" content="Seasonal lawn care, garden beds, and landscape maintenance built around your property's actual growing season.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F5EE; --ink:#1F2E1A; --ochre:#C97A2E; --forest:#3F5E33;
+    --pale:#DCE4D0; --line:rgba(31,46,26,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'Work Sans',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:'Big Shoulders Display',sans-serif;font-weight:700;letter-spacing:.01em;line-height:.98;text-transform:uppercase;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(241,245,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.02em;}
+  .brand span{color:var(--ochre);}
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
+  .nav-links a{opacity:.7;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;border:2px solid var(--ink);transition:all .18s ease;}
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--forest);border-color:var(--forest);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn:focus-visible{outline:2px solid var(--ochre);outline-offset:3px;}
+
+  /* signature mower-stripe hero */
+  .hero{position:relative;padding:72px 0 0;overflow:hidden;}
+  .stripes{position:absolute;inset:0;z-index:0;display:flex;}
+  .stripe{flex:1;height:100%;}
+  .stripe:nth-child(odd){background:var(--pale);}
+  .stripe:nth-child(even){background:var(--paper);}
+  @media (prefers-reduced-motion:no-preference){
+    .stripe{transform:scaleY(0);transform-origin:top;animation:mow 1s ease forwards;}
+    .stripe:nth-child(1){animation-delay:.05s;}
+    .stripe:nth-child(2){animation-delay:.15s;}
+    .stripe:nth-child(3){animation-delay:.25s;}
+    .stripe:nth-child(4){animation-delay:.35s;}
+    .stripe:nth-child(5){animation-delay:.45s;}
+    .stripe:nth-child(6){animation-delay:.55s;}
+    .stripe:nth-child(7){animation-delay:.65s;}
+    .stripe:nth-child(8){animation-delay:.75s;}
+  }
+  @keyframes mow{to{transform:scaleY(1);}}
+  .hero-content{position:relative;z-index:1;padding:80px 0 96px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--forest);background:rgba(255,255,255,.55);padding:6px 12px;margin-bottom:24px;}
+  .hero h1{font-size:clamp(44px,7vw,84px);margin-bottom:20px;max-width:820px;}
+  .hero p.lede{font-size:18px;max-width:460px;opacity:.8;margin-bottom:32px;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;}
+  .strip .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;opacity:.6;letter-spacing:.03em;text-transform:uppercase;}
+
+  section{padding:88px 0;}
+  .section-head{max-width:600px;margin-bottom:52px;}
+  .section-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--forest);margin-bottom:12px;display:block;}
+  .section-head h2{font-size:clamp(32px,4vw,48px);margin-bottom:12px;}
+  .section-head p{opacity:.75;font-size:16px;font-family:'Work Sans',sans-serif;text-transform:none;}
+
+  /* seasonal grid - real category, not arbitrary numbering */
+  .seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
+  .season{background:var(--paper);padding:32px 26px;}
+  .season .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ochre);margin-bottom:14px;display:block;}
+  .season h3{font-size:22px;margin-bottom:10px;text-transform:none;font-family:'Work Sans',sans-serif;font-weight:700;}
+  .season p{font-size:14px;opacity:.75;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
+  .step{padding:32px 28px;border-right:1px solid var(--line);}
+  .step:last-child{border-right:none;}
+  .step .num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ochre);margin-bottom:14px;display:block;}
+  .step h3{font-size:20px;margin-bottom:8px;text-transform:none;font-family:'Work Sans',sans-serif;font-weight:700;}
+  .step p{font-size:14px;opacity:.75;}
+
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .compare-card{background:var(--pale);padding:0;overflow:hidden;}
+  .compare-card .swatch{height:180px;display:flex;align-items:flex-end;padding:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--paper);}
+  .compare-card:nth-child(1) .swatch{background:linear-gradient(135deg,#8a9578,#5c6b48);}
+  .compare-card:nth-child(2) .swatch{background:linear-gradient(135deg,var(--forest),#2a3f22);}
+  .compare-card .cap{padding:18px 20px;font-size:14px;}
+  .compare-card .cap b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:18px;margin-bottom:4px;}
+
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
+  .price-card{background:var(--paper);padding:32px 26px;display:flex;flex-direction:column;}
+  .price-card.featured{background:var(--ink);color:var(--paper);}
+  .price-card .plan{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;opacity:.65;margin-bottom:10px;}
+  .price-card .amount{font-family:'Big Shoulders Display',sans-serif;font-size:38px;margin-bottom:4px;}
+  .price-card .per{font-size:12px;opacity:.6;margin-bottom:22px;font-family:'IBM Plex Mono',monospace;text-transform:none;}
+  .price-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;flex:1;font-size:14px;}
+  .price-card ul li{padding-left:16px;position:relative;opacity:.85;}
+  .price-card ul li::before{content:'✂';position:absolute;left:0;opacity:.6;font-size:11px;top:2px;}
+
+  .cta-band{background:var(--forest);color:var(--paper);padding:64px 40px;text-align:center;margin:0 32px 88px;}
+  .cta-band h2{font-size:clamp(28px,3.6vw,42px);margin-bottom:14px;}
+  .cta-band p{opacity:.85;margin-bottom:28px;font-family:'Work Sans',sans-serif;text-transform:none;font-size:16px;}
+  .cta-band .btn-primary{background:var(--paper);color:var(--forest);border-color:var(--paper);}
+  .cta-band .btn-ghost{border-color:rgba(255,255,255,.4);color:var(--paper);}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;font-size:13px;opacity:.6;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .seasons{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr;}
+    .step{border-right:none;border-bottom:1px solid var(--line);}
+    .compare{grid-template-columns:1fr;}
+    .pricing-grid{grid-template-columns:1fr;}
+    .cta-band{margin:0 16px 64px;padding:44px 24px;}
+    footer{flex-direction:column;gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Fieldstone <span>Grounds Co.</span></div>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our work</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <a href="#pricing" class="btn btn-primary">Get a quote</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="stripes">
+    <div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div>
+    <div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div>
+  </div>
+  <div class="wrap hero-content">
+    <span class="eyebrow">● Serving properties year-round</span>
+    <h1>Grounds kept the way the season actually calls for.</h1>
+    <p class="lede">Weekly mowing, seasonal bed work, and cleanup scheduled around what your lawn needs right now — not a fixed calendar.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-primary">Get a free quote</a>
+      <a href="#services" class="btn btn-ghost">See services</a>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="wrap">
+    <span>RESIDENTIAL & COMMERCIAL</span>
+    <span>LICENSED & INSURED</span>
+    <span>SERVING THE COUNTY SINCE 2015</span>
+  </div>
+</div>
+
+<section id="services" class="wrap">
+  <div class="section-head">
+    <span class="section-eyebrow">Services by season</span>
+    <h2>Work scheduled around growth, not a template.</h2>
+    <p>Every property gets a plan built around what's actually growing, dying back, or needing prep that month.</p>
+  </div>
+  <div class="seasons">
+    <div class="season">
+      <span class="tag">Spring</span>
+      <h3>Cleanup & prep</h3>
+      <p>Bed edging, mulch refresh, and the first cut of the year once growth actually starts.</p>
+    </div>
+    <div class="season">
+      <span class="tag">Summer</span>
+      <h3>Weekly maintenance</h3>
+      <p>Mowing on a schedule that adjusts to rainfall, plus trimming and weed control.</p>
+    </div>
+    <div class="season">
+      <span class="tag">Fall</span>
+      <h3>Leaf & bed work</h3>
+      <p>Leaf removal, aeration, and overseeding timed to the first real cold snap.</p>
+    </div>
+    <div class="season">
+      <span class="tag">Winter</span>
+      <h3>Dormant care</h3>
+      <p>Pruning while plants are dormant and property checks after storms.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="section-head">
+    <span class="section-eyebrow">Recent work</span>
+    <h2>Same property, one season apart.</h2>
+  </div>
+  <div class="compare">
+    <div class="compare-card">
+      <div class="swatch">BEFORE — MARCH</div>
+      <div class="cap"><b>Overgrown bed line</b>Winter dieback and mulch breakdown along the front bed.</div>
+    </div>
+    <div class="compare-card">
+      <div class="swatch">AFTER — MAY</div>
+      <div class="cap"><b>Edged & refreshed</b>Clean edging, fresh mulch, and the first color of the season in.</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:0;">
+  <div class="section-head">
+    <span class="section-eyebrow">How we start</span>
+    <h2>Three visits before we settle into a schedule.</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <span class="num">Visit 1</span>
+      <h3>Walk the property</h3>
+      <p>We look at what's actually there — soil, drainage, existing beds — before quoting anything.</p>
+    </div>
+    <div class="step">
+      <span class="num">Visit 2</span>
+      <h3>First full service</h3>
+      <p>A complete cleanup pass so every visit after starts from the same baseline.</p>
+    </div>
+    <div class="step">
+      <span class="num">Visit 3</span>
+      <h3>Set the schedule</h3>
+      <p>We lock in a maintenance rhythm based on how the property actually grows.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="wrap">
+  <div class="section-head">
+    <span class="section-eyebrow">Pricing</span>
+    <h2>Flat monthly rates, no surprise add-ons.</h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="plan">Basic</div>
+      <div class="amount">$140</div>
+      <div class="per">per month</div>
+      <ul>
+        <li>Weekly mowing & edging</li>
+        <li>Blower cleanup after each visit</li>
+      </ul>
+      <a href="#" class="btn btn-ghost">Get a quote</a>
+    </div>
+    <div class="price-card featured">
+      <div class="plan">Full Grounds</div>
+      <div class="amount">$225</div>
+      <div class="per">per month</div>
+      <ul>
+        <li>Everything in Basic</li>
+        <li>Bed maintenance & seasonal color</li>
+        <li>Fall leaf removal included</li>
+      </ul>
+      <a href="#" class="btn btn-primary" style="background:var(--ochre);border-color:var(--ochre);">Get a quote</a>
+    </div>
+    <div class="price-card">
+      <div class="plan">Commercial</div>
+      <div class="amount">Custom</div>
+      <div class="per">by property size</div>
+      <ul>
+        <li>Multi-property scheduling</li>
+        <li>Dedicated crew & invoicing</li>
+      </ul>
+      <a href="#" class="btn btn-ghost">Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Get a quote before the season gets away from you.</h2>
+  <p>Most quotes are turned around within two business days.</p>
+  <div class="hero-cta" style="justify-content:center;">
+    <a href="#" class="btn btn-primary">Request a quote</a>
+    <a href="#" class="btn btn-ghost">Call the office</a>
+  </div>
+</div>
+
+<footer class="wrap">
+  <span>© 2026 Fieldstone Grounds Co.</span>
+  <span>Built by Ellah Mae San Pedro</span>
+</footer>
+
+</body>
+</html>
